@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		E749CAD81F52EBE300CD056B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CAD71F52EBE300CD056B /* AppDelegate.swift */; };
-		E749CADA1F52EBE300CD056B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CAD91F52EBE300CD056B /* FirstViewController.swift */; };
 		E749CADC1F52EBE300CD056B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CADB1F52EBE300CD056B /* SecondViewController.swift */; };
 		E749CADF1F52EBE300CD056B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E749CADD1F52EBE300CD056B /* Main.storyboard */; };
 		E749CAE11F52EBE300CD056B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E749CAE01F52EBE300CD056B /* Assets.xcassets */; };
 		E749CAE41F52EBE300CD056B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E749CAE21F52EBE300CD056B /* LaunchScreen.storyboard */; };
 		E749CAEF1F52EBE300CD056B /* iOS520EstateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CAEE1F52EBE300CD056B /* iOS520EstateTests.swift */; };
 		E749CAFA1F52EBE300CD056B /* iOS520EstateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CAF91F52EBE300CD056B /* iOS520EstateUITests.swift */; };
-		E749CB0A1F52ECFE00CD056B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CB091F52ECFE00CD056B /* HomeViewController.swift */; };
+		E749CB0F1F52F40E00CD056B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CB0E1F52F40E00CD056B /* Global.swift */; };
+		E749CB111F52F70E00CD056B /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CB101F52F70E00CD056B /* HomeTableViewController.swift */; };
+		E749CB131F52F82500CD056B /* HomeCarouselPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CB121F52F82500CD056B /* HomeCarouselPageViewController.swift */; };
+		E749CB161F52FCFE00CD056B /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E749CB151F52FCFE00CD056B /* search@2x.png */; };
+		E749CB191F52FE1100CD056B /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CB181F52FE1100CD056B /* HomeSearchViewController.swift */; };
+		E749CB1B1F52FF7600CD056B /* notification@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E749CB1A1F52FF7600CD056B /* notification@2x.png */; };
+		E749CB1D1F52FFEE00CD056B /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CB1C1F52FFEE00CD056B /* NotificationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +43,6 @@
 /* Begin PBXFileReference section */
 		E749CAD41F52EBE300CD056B /* iOS520Estate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS520Estate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E749CAD71F52EBE300CD056B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E749CAD91F52EBE300CD056B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		E749CADB1F52EBE300CD056B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E749CADE1F52EBE300CD056B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E749CAE01F52EBE300CD056B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +54,13 @@
 		E749CAF51F52EBE300CD056B /* iOS520EstateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOS520EstateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E749CAF91F52EBE300CD056B /* iOS520EstateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS520EstateUITests.swift; sourceTree = "<group>"; };
 		E749CAFB1F52EBE300CD056B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E749CB091F52ECFE00CD056B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Views/HomeViewController.swift; sourceTree = "<group>"; };
+		E749CB0E1F52F40E00CD056B /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Global.swift; path = Utility/Global.swift; sourceTree = "<group>"; };
+		E749CB101F52F70E00CD056B /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewController.swift; path = Controllers/HomeTableViewController.swift; sourceTree = "<group>"; };
+		E749CB121F52F82500CD056B /* HomeCarouselPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCarouselPageViewController.swift; path = Controllers/HomeCarouselPageViewController.swift; sourceTree = "<group>"; };
+		E749CB151F52FCFE00CD056B /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		E749CB181F52FE1100CD056B /* HomeSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
+		E749CB1A1F52FF7600CD056B /* notification@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notification@2x.png"; sourceTree = "<group>"; };
+		E749CB1C1F52FFEE00CD056B /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTableViewController.swift; path = Controllers/NotificationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				E749CAD61F52EBE300CD056B /* iOS520Estate */,
+				E749CB141F52FCB600CD056B /* Images */,
 				E749CAED1F52EBE300CD056B /* iOS520EstateTests */,
 				E749CAF81F52EBE300CD056B /* iOS520EstateUITests */,
 				E749CAD51F52EBE300CD056B /* Products */,
@@ -101,9 +112,9 @@
 		E749CAD61F52EBE300CD056B /* iOS520Estate */ = {
 			isa = PBXGroup;
 			children = (
-				E749CB071F52ECB600CD056B /* Views */,
+				E749CB0D1F52F3E800CD056B /* Utility */,
+				E749CB071F52ECB600CD056B /* Controllers */,
 				E749CAD71F52EBE300CD056B /* AppDelegate.swift */,
-				E749CAD91F52EBE300CD056B /* FirstViewController.swift */,
 				E749CADB1F52EBE300CD056B /* SecondViewController.swift */,
 				E749CADD1F52EBE300CD056B /* Main.storyboard */,
 				E749CAE01F52EBE300CD056B /* Assets.xcassets */,
@@ -131,20 +142,49 @@
 			path = iOS520EstateUITests;
 			sourceTree = "<group>";
 		};
-		E749CB071F52ECB600CD056B /* Views */ = {
+		E749CB071F52ECB600CD056B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E749CB081F52ECC200CD056B /* Home */,
 			);
-			name = Views;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		E749CB081F52ECC200CD056B /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				E749CB091F52ECFE00CD056B /* HomeViewController.swift */,
+				E749CB101F52F70E00CD056B /* HomeTableViewController.swift */,
+				E749CB121F52F82500CD056B /* HomeCarouselPageViewController.swift */,
+				E749CB181F52FE1100CD056B /* HomeSearchViewController.swift */,
+				E749CB1C1F52FFEE00CD056B /* NotificationTableViewController.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		E749CB0D1F52F3E800CD056B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E749CB0E1F52F40E00CD056B /* Global.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		E749CB141F52FCB600CD056B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E749CB171F52FD0200CD056B /* Utility */,
+			);
+			name = Images;
+			path = iOS520Estate;
+			sourceTree = "<group>";
+		};
+		E749CB171F52FD0200CD056B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E749CB151F52FCFE00CD056B /* search@2x.png */,
+				E749CB1A1F52FF7600CD056B /* notification@2x.png */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +297,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E749CB161F52FCFE00CD056B /* search@2x.png in Resources */,
 				E749CAE41F52EBE300CD056B /* LaunchScreen.storyboard in Resources */,
+				E749CB1B1F52FF7600CD056B /* notification@2x.png in Resources */,
 				E749CAE11F52EBE300CD056B /* Assets.xcassets in Resources */,
 				E749CADF1F52EBE300CD056B /* Main.storyboard in Resources */,
 			);
@@ -284,10 +326,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E749CB0F1F52F40E00CD056B /* Global.swift in Sources */,
+				E749CB131F52F82500CD056B /* HomeCarouselPageViewController.swift in Sources */,
+				E749CB1D1F52FFEE00CD056B /* NotificationTableViewController.swift in Sources */,
 				E749CADC1F52EBE300CD056B /* SecondViewController.swift in Sources */,
 				E749CAD81F52EBE300CD056B /* AppDelegate.swift in Sources */,
-				E749CADA1F52EBE300CD056B /* FirstViewController.swift in Sources */,
-				E749CB0A1F52ECFE00CD056B /* HomeViewController.swift in Sources */,
+				E749CB111F52F70E00CD056B /* HomeTableViewController.swift in Sources */,
+				E749CB191F52FE1100CD056B /* HomeSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

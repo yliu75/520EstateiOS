@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  HomeSearchViewController.swift
 //  iOS520Estate
 //
 //  Created by Yonglun Liu on 2017/8/27.
@@ -8,10 +8,13 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeSearchViewController: UIViewController,UISearchBarDelegate {
 
+    @IBOutlet weak var SearchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        SearchBar.delegate=self
+        SearchBar.becomeFirstResponder()
 
         // Do any additional setup after loading the view.
     }
@@ -22,6 +25,9 @@ class HomeViewController: UIViewController {
     }
     
 
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
