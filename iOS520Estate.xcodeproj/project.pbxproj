@@ -15,6 +15,7 @@
 		E749CAE41F52EBE300CD056B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E749CAE21F52EBE300CD056B /* LaunchScreen.storyboard */; };
 		E749CAEF1F52EBE300CD056B /* iOS520EstateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CAEE1F52EBE300CD056B /* iOS520EstateTests.swift */; };
 		E749CAFA1F52EBE300CD056B /* iOS520EstateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CAF91F52EBE300CD056B /* iOS520EstateUITests.swift */; };
+		E749CB0A1F52ECFE00CD056B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749CB091F52ECFE00CD056B /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E749CAF51F52EBE300CD056B /* iOS520EstateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOS520EstateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E749CAF91F52EBE300CD056B /* iOS520EstateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS520EstateUITests.swift; sourceTree = "<group>"; };
 		E749CAFB1F52EBE300CD056B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E749CB091F52ECFE00CD056B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Views/HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		E749CAD61F52EBE300CD056B /* iOS520Estate */ = {
 			isa = PBXGroup;
 			children = (
+				E749CB071F52ECB600CD056B /* Views */,
 				E749CAD71F52EBE300CD056B /* AppDelegate.swift */,
 				E749CAD91F52EBE300CD056B /* FirstViewController.swift */,
 				E749CADB1F52EBE300CD056B /* SecondViewController.swift */,
@@ -126,6 +129,22 @@
 				E749CAFB1F52EBE300CD056B /* Info.plist */,
 			);
 			path = iOS520EstateUITests;
+			sourceTree = "<group>";
+		};
+		E749CB071F52ECB600CD056B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E749CB081F52ECC200CD056B /* Home */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E749CB081F52ECC200CD056B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E749CB091F52ECFE00CD056B /* HomeViewController.swift */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +287,7 @@
 				E749CADC1F52EBE300CD056B /* SecondViewController.swift in Sources */,
 				E749CAD81F52EBE300CD056B /* AppDelegate.swift in Sources */,
 				E749CADA1F52EBE300CD056B /* FirstViewController.swift in Sources */,
+				E749CB0A1F52ECFE00CD056B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +439,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = W63X7AW47S;
 				INFOPLIST_FILE = iOS520Estate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YonglunTech.iOS520Estate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -432,11 +454,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = W63X7AW47S;
 				INFOPLIST_FILE = iOS520Estate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YonglunTech.iOS520Estate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
