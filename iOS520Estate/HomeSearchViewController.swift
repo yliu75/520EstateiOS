@@ -15,6 +15,7 @@ class HomeSearchViewController: UIViewController,UISearchBarDelegate {
         super.viewDidLoad()
         SearchBar.delegate=self
         SearchBar.becomeFirstResponder()
+        self.view.backgroundColor=globalBackgroundColor
 
         // Do any additional setup after loading the view.
     }
