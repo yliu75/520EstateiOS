@@ -51,15 +51,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="jSo-EE-TH0">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
-                                <segue destination="DH3-FN-lRa" kind="embed" id="OyN-ee-MnC"/>
+                                <segue destination="ilR-hI-lwQ" kind="embed" id="eXt-e2-zO4"/>
                             </connections>
                         </containerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="carousel" rowHeight="183" id="obH-cv-wpI">
-                                <rect key="frame" x="0.0" y="291" width="375" height="183"/>
+                                <rect key="frame" x="0.0" y="239" width="375" height="183"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="obH-cv-wpI" id="GNr-eM-buC">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="183"/>
@@ -166,42 +166,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="330" id="vbg-QJ-LYg" customClass="ComplexTableViewCell" customModule="iOS520Estate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="330"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="291" id="vbg-QJ-LYg" customClass="ComplexTableViewCell" customModule="iOS520Estate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="291"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vbg-QJ-LYg" id="rUN-7L-mbG">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="291"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRg-Jx-WQ8">
-                                            <rect key="frame" x="8" y="6" width="359" height="318"/>
+                                            <rect key="frame" x="8" y="6" width="359" height="279"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="broken.png" translatesAutoresizingMaskIntoConstraints="NO" id="P6U-Y6-cAH">
-                                                    <rect key="frame" x="9.5" y="10" width="339" height="226"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="broken.png" translatesAutoresizingMaskIntoConstraints="NO" id="P6U-Y6-cAH">
+                                                    <rect key="frame" x="9.5" y="10" width="339" height="190.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="P6U-Y6-cAH" secondAttribute="height" multiplier="3:2" id="2Vz-El-ivU"/>
+                                                        <constraint firstAttribute="width" secondItem="P6U-Y6-cAH" secondAttribute="height" multiplier="16:9" id="2Vz-El-ivU"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="房源的标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjX-Jy-QWU">
-                                                    <rect key="frame" x="8" y="243.5" width="122" height="29"/>
+                                                    <rect key="frame" x="8" y="204.5" width="122" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="常州-新北" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPQ-tt-4Jx">
-                                                    <rect key="frame" x="8" y="274" width="64" height="17"/>
+                                                    <rect key="frame" x="8" y="235" width="64" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="住宅 120-140平米" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6j-7J-dDf">
-                                                    <rect key="frame" x="8" y="291" width="115" height="17"/>
+                                                    <rect key="frame" x="8" y="252" width="115" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2100元/月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wq-7B-nLo">
-                                                    <rect key="frame" x="246.5" y="268" width="104.5" height="26.5"/>
+                                                    <rect key="frame" x="246.5" y="232.5" width="104.5" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -209,7 +209,7 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.96470588239999999" green="0.97507052949999995" blue="0.88294813370000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="cjX-Jy-QWU" firstAttribute="top" secondItem="P6U-Y6-cAH" secondAttribute="bottom" constant="7.5" id="1O8-7s-6AR"/>
+                                                <constraint firstItem="cjX-Jy-QWU" firstAttribute="top" secondItem="P6U-Y6-cAH" secondAttribute="bottom" constant="4" id="1O8-7s-6AR"/>
                                                 <constraint firstItem="P6U-Y6-cAH" firstAttribute="width" secondItem="IRg-Jx-WQ8" secondAttribute="width" constant="-20" id="6Wv-hd-5z8"/>
                                                 <constraint firstItem="P6U-Y6-cAH" firstAttribute="centerX" secondItem="IRg-Jx-WQ8" secondAttribute="centerX" id="Hes-LK-IAr"/>
                                                 <constraint firstItem="P6U-Y6-cAH" firstAttribute="top" secondItem="IRg-Jx-WQ8" secondAttribute="top" constant="10" id="NFl-4f-Rln"/>
@@ -305,50 +305,16 @@
             </objects>
             <point key="canvasLocation" x="2358" y="787"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ChN-i1-0ab">
-            <objects>
-                <viewController id="DH3-FN-lRa" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Iks-pC-2ny"/>
-                        <viewControllerLayoutGuide type="bottom" id="QEu-ps-i9H"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0am-zS-vXx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isY-wU-4ED">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="isY-wU-4ED" secondAttribute="height" multiplier="15:8" id="5bM-O1-YRO" userLabel="aspect = 375:211"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="ilR-hI-lwQ" kind="embed" id="j6F-ye-XBN"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="isY-wU-4ED" firstAttribute="centerX" secondItem="0am-zS-vXx" secondAttribute="centerX" id="1PI-Ip-A06"/>
-                            <constraint firstItem="isY-wU-4ED" firstAttribute="width" secondItem="0am-zS-vXx" secondAttribute="width" id="4Bd-c5-ksR"/>
-                            <constraint firstItem="isY-wU-4ED" firstAttribute="top" secondItem="Iks-pC-2ny" secondAttribute="bottom" id="cpc-9n-kpw"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QuU-sd-vVR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1650" y="1375"/>
-        </scene>
-        <!--View Controller-->
+        <!--Home Carousel View Controller-->
         <scene sceneID="CUf-fy-VOb">
             <objects>
-                <viewController id="ilR-hI-lwQ" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="ilR-hI-lwQ" customClass="HomeCarouselViewController" customModule="iOS520Estate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HaX-L3-ZfK"/>
                         <viewControllerLayoutGuide type="bottom" id="zCt-Od-cdO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="457-np-6bU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

@@ -14,6 +14,7 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.tableFooterView=UIView()
         self.view.backgroundColor=globalBackgroundColor
+        self.tableView.tableHeaderView?.frame.size.height=screenWidth/16*9
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

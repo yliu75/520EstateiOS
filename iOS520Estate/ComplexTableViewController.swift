@@ -55,7 +55,7 @@ class ComplexTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return screenWidth/3*2+80
+        return screenWidth/16*9+80
     }
 
     /*

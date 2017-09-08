@@ -28,17 +28,24 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-let CarouselImageSet = ["Car0.png","Car1.png"]
+//let CarouselImageSet = ["room_1.jpg","room_2.jpg","room_3.jpg","room_4.jpg","room_5.jpg","room_6.jpg","room_7.jpg"]
+let CarouselImageSet = ["1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png"]
 
 class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataSource{
     
     var source:HomeTableViewController!
-    var imageIndex=0
+    var imageIndexCurrent = 0
+    var imageIndexLast=CarouselImageSet.count-1
+    var imageIndexNext = 1
     var currentViewController:CarouselPageController=CarouselPageController()
     
     
     let typeSet = [1,2,3]
     var list:[carouselInfo]=[]
+    //private var timer: Timer = Timer()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +56,14 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
         //let contentVC=CarouselPageController()
         
         
+        self.currentViewController.imageName=CarouselImageSet[imageIndexCurrent]
+        self.currentViewController.Index=imageIndexCurrent
+        let contents = [self.currentViewController]
+        self.setViewControllers(contents, direction: .forward, animated: false, completion: nil)
+
         
         self.view.backgroundColor=UIColor.black
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.scrollToNext), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.advancePage), userInfo: nil, repeats: true)
         
         
         
@@ -68,6 +80,7 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currentViewController.imageView.backgroundColor = globalLoadingColor
+        
         //        if DataFromServer.carouselIsNil! {
         //            //currentViewController.imageName = CarouselImageSet.first
         //            //currentViewController.imageView.tag = 1
@@ -130,6 +143,39 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
         
     }
     
+    
+    func advancePage () {
+        //let pvcs = self.childViewControllers as! [CarouselPageController]
+        
+        let itemIndex = imageIndexCurrent
+        
+        
+        let firstController = getItemController(itemIndex: itemIndex+1)!
+        let startingViewControllers = [firstController]
+        self.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion:nil)
+    }
+    
+    
+    private func getItemController(itemIndex: Int) -> CarouselPageController? {
+        print(itemIndex)
+        if itemIndex < CarouselImageSet.count {
+            let pageItemController = CarouselPageController()
+            pageItemController.Index = itemIndex
+            pageItemController.imageName = CarouselImageSet[itemIndex]
+            imageIndexCurrent+=1
+            return pageItemController
+        }else{
+            let pageItemController = CarouselPageController()
+            pageItemController.Index=0
+            pageItemController.imageName=CarouselImageSet[0]
+            imageIndexCurrent=0
+            return pageItemController
+        }
+        
+    }
+    
+
+    
     func scrollToNext()  {
         //        let currentView=self.
         //        let currentName = (viewController as! CarouselPageController).imageName
@@ -170,15 +216,22 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
             
             
             let currentIndex = a.Index
+            imageIndexCurrent=currentIndex!
             //print(currentIndex)
-            if currentIndex<list.count-1 {
+            if currentIndex<CarouselImageSet.count-1 {
                 let nextPage = CarouselPageController()
-                let carousel = list[currentIndex!+1]
-                nextPage.Index = currentIndex!+1
-                nextPage.contentID=carousel.ID
-                nextPage.imageUrl=carousel.cover
-                nextPage.type=carousel.type
+//                let carousel = list[currentIndex!+1]
+//                nextPage.Index = currentIndex!+1
+//                nextPage.contentID=carousel.ID
+//                nextPage.imageUrl=carousel.cover
+//                nextPage.type=carousel.type
                 
+                
+                
+                nextPage.Index=currentIndex!+1
+                nextPage.imageName=CarouselImageSet[currentIndex!+1]
+                imageIndexNext=nextPage.Index
+                //imageIndex=currentIndex!+1
                 //            if DataFromServer.carouselIsNil! {
                 //                //nextPage.imageName=CarouselImageSet[currentIndex!+1]
                 //                nextPage.Index=currentIndex!+1
@@ -197,11 +250,17 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
             }else{
                 let firstPage = CarouselPageController()
                 firstPage.Index = 0
-                let carousel = list.first ?? carouselInfo()
-                firstPage.Index = 0
-                firstPage.contentID=carousel.ID
-                firstPage.imageUrl=carousel.cover
-                firstPage.type=carousel.type
+//                let carousel = list.first ?? carouselInfo()
+//                firstPage.Index = 0
+//                firstPage.contentID=carousel.ID
+//                firstPage.imageUrl=carousel.cover
+//                firstPage.type=carousel.type
+//                
+
+                firstPage.imageName=CarouselImageSet[0]
+                firstPage.Index=0
+                //imageIndex=0
+                
                 //            if DataFromServer.carouselIsNil! {
                 //                //firstPage.imageName=CarouselImageSet[0]
                 //                firstPage.imageView.tag = 404
@@ -216,6 +275,7 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
                 //                }
                 //            }
                 //(viewController as! CarouselPageController).Index = 0
+                imageIndexNext=firstPage.Index
                 return firstPage
             }
         }else{
@@ -230,17 +290,22 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
             
             
             let currentIndex = a.Index
+            imageIndexCurrent=currentIndex!
             //let currentName = (viewController as! CarouselPageController).imageName
             //print(currentIndex)
             if currentIndex > 0 {
                 let lastPage = CarouselPageController()
                 lastPage.Index = currentIndex!-1
-                let carousel = list[currentIndex!-1]
+//                let carousel = list[currentIndex!-1]
+//                
+//                lastPage.Index = currentIndex!-1
+//                lastPage.contentID=carousel.ID
+//                lastPage.imageUrl=carousel.cover
+//                lastPage.type=carousel.type
                 
-                lastPage.Index = currentIndex!-1
-                lastPage.contentID=carousel.ID
-                lastPage.imageUrl=carousel.cover
-                lastPage.type=carousel.type
+                lastPage.imageName=CarouselImageSet[currentIndex!-1]
+                //imageIndex=currentIndex!-1
+                
                 //            if DataFromServer.carouselIsNil! {
                 //                //nextPage.imageName=CarouselImageSet[currentIndex!-1]
                 //                //nextPage.imageView.tag=typeSet[currentIndex!-1]
@@ -257,17 +322,17 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
                 
                 
                 
-                
+                imageIndexLast=lastPage.Index
                 return lastPage
             }else{
                 let lastPage = CarouselPageController()
-                lastPage.Index = list.count-1
-                let carousel = list[list.count-1]
-                lastPage.contentID=carousel.ID
-                lastPage.imageUrl=carousel.cover
-                lastPage.type=carousel.type
-                
-                
+                lastPage.Index = CarouselImageSet.count-1
+//                let carousel = list[list.count-1]
+//                lastPage.contentID=carousel.ID
+//                lastPage.imageUrl=carousel.cover
+//                lastPage.type=carousel.type
+                lastPage.imageName=CarouselImageSet[CarouselImageSet.count-1]
+                //imageIndex=CarouselImageSet.count-1
                 //lastPage.Index = 0
                 //            if DataFromServer.carouselIsNil! {
                 ////                lastPage.Index = CarouselImageSet.count-1
@@ -286,7 +351,7 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
                 //                }
                 //            }            //(viewController as! CarouselPageController).Index = 0
                 
-                
+                imageIndexLast=lastPage.Index
                 return lastPage
             }
             
@@ -337,7 +402,8 @@ class CarouselPageController :UIViewController{
     }
     let imageView:UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds=true
         iv.translatesAutoresizingMaskIntoConstraints = false
         
         return iv
