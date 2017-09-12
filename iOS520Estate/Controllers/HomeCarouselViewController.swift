@@ -30,6 +30,9 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 //let CarouselImageSet = ["room_1.jpg","room_2.jpg","room_3.jpg","room_4.jpg","room_5.jpg","room_6.jpg","room_7.jpg"]
 let CarouselImageSet = ["1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png"]
+var ShouldAutoPlayHomeCarousel=true
+//var SinceLastScroll=0
+
 
 class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataSource{
     
@@ -50,6 +53,7 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource=self
+        ShouldAutoPlayHomeCarousel=true
         //self.view.frame.size.height = screenWidth / 375.0 * 183.0
         //print("------adjusted height:\(self.view.frame.size.height)")
         //print(screenSize)
@@ -60,10 +64,10 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
         self.currentViewController.Index=imageIndexCurrent
         let contents = [self.currentViewController]
         self.setViewControllers(contents, direction: .forward, animated: false, completion: nil)
-
+        
         
         self.view.backgroundColor=UIColor.black
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.advancePage), userInfo: nil, repeats: true)
+        
         
         
         
@@ -98,83 +102,92 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
         //            }
         //
         //        }
-//        let url = URL(string: DataFromServer.homeCarouselUrl)
-//        print(currentuser)
-//        print(url ?? "url error")
-//        
-//        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-//            guard error == nil else {
-//                print(error!)
-//                return
-//            }
-//            guard let data = data else {
-//                print("Data is empty")
-//                return
-//            }
-//            print(data)
-//            
-//            
-//            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [Any]{
-//                for item in json{
-//                    let obj = item as![String:Any]
-//                    let c = carouselInfo()
-//                    c.cover=obj["imgAddr"] as? String
-//                    c.ID=obj["contentID"] as? Int
-//                    c.type=obj["style"] as? Int
-//                    self.list.append(c)
-//                }
-//                let image = fetchImage(url: (self.list.first?.cover)!, context: g_context)
-//                DispatchQueue.main.async {
-//                    self.currentViewController.imageView.image=image
-//                    self.currentViewController.contentID=self.list.first?.ID
-//                    self.currentViewController.type=self.list.first?.type
-//                    self.currentViewController.Index = 0
-//                    firstCarouselPageController = self.currentViewController
-//                    let contents = [self.currentViewController]
-//                    self.setViewControllers(contents, direction: .forward, animated: false, completion: nil)
-//                }
-//                
-//            }else{
-//                print("[Failed]Did not get user data from server when trying to downloading the user data")
-//            }
-//            
-//        }
-//        task.resume()
+        //        let url = URL(string: DataFromServer.homeCarouselUrl)
+        //        print(currentuser)
+        //        print(url ?? "url error")
+        //
+        //        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+        //            guard error == nil else {
+        //                print(error!)
+        //                return
+        //            }
+        //            guard let data = data else {
+        //                print("Data is empty")
+        //                return
+        //            }
+        //            print(data)
+        //
+        //
+        //            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [Any]{
+        //                for item in json{
+        //                    let obj = item as![String:Any]
+        //                    let c = carouselInfo()
+        //                    c.cover=obj["imgAddr"] as? String
+        //                    c.ID=obj["contentID"] as? Int
+        //                    c.type=obj["style"] as? Int
+        //                    self.list.append(c)
+        //                }
+        //                let image = fetchImage(url: (self.list.first?.cover)!, context: g_context)
+        //                DispatchQueue.main.async {
+        //                    self.currentViewController.imageView.image=image
+        //                    self.currentViewController.contentID=self.list.first?.ID
+        //                    self.currentViewController.type=self.list.first?.type
+        //                    self.currentViewController.Index = 0
+        //                    firstCarouselPageController = self.currentViewController
+        //                    let contents = [self.currentViewController]
+        //                    self.setViewControllers(contents, direction: .forward, animated: false, completion: nil)
+        //                }
+        //
+        //            }else{
+        //                print("[Failed]Did not get user data from server when trying to downloading the user data")
+        //            }
+        //
+        //        }
+        //        task.resume()
         
     }
     
     
+    
     func advancePage () {
+        
         //let pvcs = self.childViewControllers as! [CarouselPageController]
+        print("AdvancePage...")
         
-        let itemIndex = imageIndexCurrent
-        
-        
-        let firstController = getItemController(itemIndex: itemIndex+1)!
+        let itemIndex = self.imageIndexCurrent
+        let firstController = self.getItemController(itemIndex: itemIndex+1)!
         let startingViewControllers = [firstController]
-        self.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion:nil)
+        self.view.isUserInteractionEnabled=false
+        self.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion:{
+            finished in
+            self.view.isUserInteractionEnabled=true
+        })
+        
+        
     }
     
     
     private func getItemController(itemIndex: Int) -> CarouselPageController? {
-        print(itemIndex)
+        //print(itemIndex)
         if itemIndex < CarouselImageSet.count {
             let pageItemController = CarouselPageController()
             pageItemController.Index = itemIndex
             pageItemController.imageName = CarouselImageSet[itemIndex]
             imageIndexCurrent+=1
+            print(imageIndexCurrent)
             return pageItemController
         }else{
             let pageItemController = CarouselPageController()
             pageItemController.Index=0
             pageItemController.imageName=CarouselImageSet[0]
             imageIndexCurrent=0
+            print(imageIndexCurrent)
             return pageItemController
         }
         
     }
     
-
+    
     
     func scrollToNext()  {
         //        let currentView=self.
@@ -211,26 +224,28 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         //let currentName = (viewController as! CarouselPageController).imageName
+        ShouldAutoPlayHomeCarousel=false
+        
         if let a = viewController as? CarouselPageController{
             
             
             
             let currentIndex = a.Index
-            imageIndexCurrent=currentIndex!
+            //imageIndexCurrent=currentIndex!
             //print(currentIndex)
             if currentIndex<CarouselImageSet.count-1 {
                 let nextPage = CarouselPageController()
-//                let carousel = list[currentIndex!+1]
-//                nextPage.Index = currentIndex!+1
-//                nextPage.contentID=carousel.ID
-//                nextPage.imageUrl=carousel.cover
-//                nextPage.type=carousel.type
+                //                let carousel = list[currentIndex!+1]
+                //                nextPage.Index = currentIndex!+1
+                //                nextPage.contentID=carousel.ID
+                //                nextPage.imageUrl=carousel.cover
+                //                nextPage.type=carousel.type
                 
                 
                 
                 nextPage.Index=currentIndex!+1
                 nextPage.imageName=CarouselImageSet[currentIndex!+1]
-                imageIndexNext=nextPage.Index
+                //imageIndexNext=nextPage.Index
                 //imageIndex=currentIndex!+1
                 //            if DataFromServer.carouselIsNil! {
                 //                //nextPage.imageName=CarouselImageSet[currentIndex!+1]
@@ -250,13 +265,13 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
             }else{
                 let firstPage = CarouselPageController()
                 firstPage.Index = 0
-//                let carousel = list.first ?? carouselInfo()
-//                firstPage.Index = 0
-//                firstPage.contentID=carousel.ID
-//                firstPage.imageUrl=carousel.cover
-//                firstPage.type=carousel.type
-//                
-
+                //                let carousel = list.first ?? carouselInfo()
+                //                firstPage.Index = 0
+                //                firstPage.contentID=carousel.ID
+                //                firstPage.imageUrl=carousel.cover
+                //                firstPage.type=carousel.type
+                //
+                
                 firstPage.imageName=CarouselImageSet[0]
                 firstPage.Index=0
                 //imageIndex=0
@@ -275,7 +290,7 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
                 //                }
                 //            }
                 //(viewController as! CarouselPageController).Index = 0
-                imageIndexNext=firstPage.Index
+                //imageIndexNext=firstPage.Index
                 return firstPage
             }
         }else{
@@ -284,24 +299,25 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
     }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        
+        ShouldAutoPlayHomeCarousel=false
+
         if let a = viewController as? CarouselPageController{
             
             
             
             let currentIndex = a.Index
-            imageIndexCurrent=currentIndex!
+            //imageIndexCurrent=currentIndex!
             //let currentName = (viewController as! CarouselPageController).imageName
             //print(currentIndex)
             if currentIndex > 0 {
                 let lastPage = CarouselPageController()
                 lastPage.Index = currentIndex!-1
-//                let carousel = list[currentIndex!-1]
-//                
-//                lastPage.Index = currentIndex!-1
-//                lastPage.contentID=carousel.ID
-//                lastPage.imageUrl=carousel.cover
-//                lastPage.type=carousel.type
+                //                let carousel = list[currentIndex!-1]
+                //
+                //                lastPage.Index = currentIndex!-1
+                //                lastPage.contentID=carousel.ID
+                //                lastPage.imageUrl=carousel.cover
+                //                lastPage.type=carousel.type
                 
                 lastPage.imageName=CarouselImageSet[currentIndex!-1]
                 //imageIndex=currentIndex!-1
@@ -322,15 +338,15 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
                 
                 
                 
-                imageIndexLast=lastPage.Index
+                //imageIndexLast=lastPage.Index
                 return lastPage
             }else{
                 let lastPage = CarouselPageController()
                 lastPage.Index = CarouselImageSet.count-1
-//                let carousel = list[list.count-1]
-//                lastPage.contentID=carousel.ID
-//                lastPage.imageUrl=carousel.cover
-//                lastPage.type=carousel.type
+                //                let carousel = list[list.count-1]
+                //                lastPage.contentID=carousel.ID
+                //                lastPage.imageUrl=carousel.cover
+                //                lastPage.type=carousel.type
                 lastPage.imageName=CarouselImageSet[CarouselImageSet.count-1]
                 //imageIndex=CarouselImageSet.count-1
                 //lastPage.Index = 0
@@ -351,7 +367,7 @@ class HomeCarouselViewController: UIPageViewController,UIPageViewControllerDataS
                 //                }
                 //            }            //(viewController as! CarouselPageController).Index = 0
                 
-                imageIndexLast=lastPage.Index
+                //imageIndexLast=lastPage.Index
                 return lastPage
             }
             
@@ -426,7 +442,7 @@ class CarouselPageController :UIViewController{
             
             // }
         }
-        print("current content id=\(contentID ?? 0)")
+        //print("current content id=\(contentID ?? 0)")
         view.addSubview(imageView)
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":imageView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":imageView]))
@@ -434,6 +450,25 @@ class CarouselPageController :UIViewController{
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(self.imageTapped(_:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        if ShouldAutoPlayHomeCarousel {
+            DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
+                if ShouldAutoPlayHomeCarousel{
+                    let dad = self.parent as? HomeCarouselViewController
+                    if(dad != nil){
+                        if(dad?.imageIndexCurrent==self.Index){
+                            dad?.advancePage()
+                        }else{
+                            print("Pass since index diff")
+                        }
+                    }else{
+                        print("Pass since null dad")
+                    }
+                }
+                
+            })
+        }
+        
         
         
         
@@ -451,23 +486,23 @@ class CarouselPageController :UIViewController{
         //saveImagesToCoreData(context: g_context, data: imageData)
     }
     func imageTapped(_ sender:UIGestureRecognizer)  {
-//        let parent=self.parent as! HomeCarouselViewController
-//        let grandparent=parent.parent as! HomeTableViewController
-//        let grandgrandparent = grandparent.parent as!  HomeContainerViewController
-//        //let carousel = list[(sender.view?.tag)!]
-//        switch self.type! {
-//        case 0:
-//            grandgrandparent.performSegue(withIdentifier: "homeToVideoDetailSegue", sender: self.contentID)
-//        case 1:
-//            grandgrandparent.performSegue(withIdentifier: "homeToArticleDetailSegue", sender: self.contentID)
-//        case 2:
-//            grandgrandparent.performSegue(withIdentifier: "homeToPhotoDetailSegue", sender: self.contentID)
-//        case 3:
-//            grandgrandparent.performSegue(withIdentifier: "homeToPhotoDetailSegue", sender: self.contentID)
-//            
-//        default:
-//            grandgrandparent.performSegue(withIdentifier: "homeToPhotoDetailSegue", sender: self.contentID)
-//        }
+        //        let parent=self.parent as! HomeCarouselViewController
+        //        let grandparent=parent.parent as! HomeTableViewController
+        //        let grandgrandparent = grandparent.parent as!  HomeContainerViewController
+        //        //let carousel = list[(sender.view?.tag)!]
+        //        switch self.type! {
+        //        case 0:
+        //            grandgrandparent.performSegue(withIdentifier: "homeToVideoDetailSegue", sender: self.contentID)
+        //        case 1:
+        //            grandgrandparent.performSegue(withIdentifier: "homeToArticleDetailSegue", sender: self.contentID)
+        //        case 2:
+        //            grandgrandparent.performSegue(withIdentifier: "homeToPhotoDetailSegue", sender: self.contentID)
+        //        case 3:
+        //            grandgrandparent.performSegue(withIdentifier: "homeToPhotoDetailSegue", sender: self.contentID)
+        //
+        //        default:
+        //            grandgrandparent.performSegue(withIdentifier: "homeToPhotoDetailSegue", sender: self.contentID)
+        //        }
         
         //grandparent.performSegue(withIdentifier: "HomeCarouselToDetail", sender: self)
         //print(parent.CarouselImageSet.index(of: self.imageName!))
